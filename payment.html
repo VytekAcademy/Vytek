@@ -66,16 +66,31 @@
     <div class="card-body">
         <h4 class="card-title fw-bold text-primary mb-4">Payment Methods</h4>
 
-        <!-- Google Pay Button -->
-        <div class="mb-4">
-            <h5 class="fw-bold mb-3">
-                <i class="fas fa-wallet text-primary me-2"></i>Google Pay UPI Payment
-            </h5>
-            <a id="gpayRedirectBtn" class="btn btn-success" href="#" target="_blank">
-                <i class="fab fa-google-pay me-2"></i>Pay with Google Pay
-            </a>
-            <p class="text-muted mt-2">Click the button to open Google Pay with the selected amount</p>
-        </div>
+        <Div onload="loadPaymentDetails()">
+
+    <div class="mb-4">
+        <h5>Google Pay UPI Payment</h5>
+        <a id="gpayRedirectBtn" class="btn btn-success" href="#" target="_blank">
+            Pay with Google Pay
+        </a>
+        <p>Click the button to open Google Pay with the selected amount</p>
+    </div>
+
+    <script>
+        function loadPaymentDetails() {
+            const courseName = localStorage.getItem('selectedCourse');
+            const amount = localStorage.getItem('selectedAmount');
+
+            if (!courseName || !amount) {
+                window.location.href = 'courses.html';
+                return;
+            }
+
+            const upiUrl = `https://upi.link/pay?pa=anjitha.ajith1312@oksbi&pn=Vytek%20Academy&am=${amount}&cu=INR&tn=Payment for ${courseName}`;
+            document.getElementById('gpayRedirectBtn').setAttribute('href', upiUrl);
+        }
+    </script>
+    <div>
 
         <!-- QR Code Section -->
         <div class="mb-4">
