@@ -188,7 +188,7 @@ function loadPaymentDetails() {
     document.getElementById('selectedCourse').textContent = courseName;
     document.getElementById('courseAmount').textContent = `₹${amount}`;
 
-    const upiUrl = `upi://pay?pa=anjitha.ajith1312@oksbi&pn=Vytek Academy&am=${amount}&cu=INR&tn=Payment for ${courseName}`;
+    const upiUrl = `https://upi.link/pay?pa=anjitha.ajith1312@oksbi&pn=Vytek%20Academy&am=${amount}&cu=INR&tn=Payment for ${courseName}`;
     document.getElementById('gpayRedirectBtn').setAttribute('href', upiUrl);
 
     // Generate QR code
